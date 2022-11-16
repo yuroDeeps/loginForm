@@ -37,6 +37,11 @@ class User {
         }
     }
     public function logout() {
+        $this->login = null;
+        $this->password = null;
+        $this->id = null;
+        $this->firstName = null;
+        $this->lastName = null;
 
     }
 
