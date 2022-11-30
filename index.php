@@ -10,5 +10,9 @@ Route::add('/',function () {
         echo "Strona główna";
 });
 
-Route::run();
+Route::add('/login', function() {
+    echo "Strona logowania";
+});
+
+Route::run('/loginForm');
 ?>
