@@ -1,13 +1,20 @@
 <?php
-require('ObjectClass/User.class.php');
-echo "<pre>";
-$db = new mysqli('localhost', 'root', '', 'login_form');
-$user = new User("dwalski","taj3neHasło");
-//$user->register();
-$user->login();
-if($user->isAuth()) {
-    echo "Użytkownik zalogowany poprawnie";
+require_once('config.php');
+require_once('class/class.php');
+
+$user = new User('jkowalski', 'tajneHasło');
+/*
+if($user->register()) {
+    echo "Zarejestrowano poprawnie";
 } else {
-    echo "Błąd logowania";
+    echo "Błąd rejestracji użytkownika";
 }
+*/
+
+if($user->login()) {
+    echo "Zalogowano poprawnie";
+} else {
+    echo "Błędny login lub hasło";
+}
+
 ?>
