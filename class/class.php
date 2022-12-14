@@ -82,6 +82,15 @@ class User {
         $preparedQuery->bind_param("ssi", $this->firstName, $this->lastName, $this->id);
         return $preparedQuery->execute();
     }
+    public function changePassword(string $newPassword) : bool {
+        $this->password_hash = password_hash($newPassword, PASSWORD_ARGON2I);
+        $q = "UPDATE user SET
+                password = ?
+                WHERE id = ?";
+        $preparedQuery = $this->db->prepare($q);
+        $preparedQuery->bind_param("si", $this->password_hash, $this->id);
+        return $preparedQuery->execute();
+    }
 }
 
 ?>
